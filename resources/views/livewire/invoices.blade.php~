@@ -1,0 +1,46 @@
+<div class="p-6">
+    <h2 class="text-2xl font-bold mb-4">My Orders</h2>
+
+    @if ($invoices->isEmpty())
+        <p>You don't have any invoices yet.</p>
+    @else
+        <table class="w-full border-collapse table-auto">
+            <thead class="bg-gray-100 dark:bg-zinc-700 text-left">
+            <tr>
+                <th class="p-2">Date</th>
+                <th class="p-2">Amount</th>
+                <th class="p-2">Client ID</th>
+                <th class="p-2">Transaction ID</th>
+                <th class="p-2">Status</th>
+                <th class="p-2">Download</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach ($invoices as $invoice)
+                <tr class="border-b">
+                    <td class="p-2">{{ $invoice->date()->toFormattedDateString() }}</td>
+                    <td class="p-2">{{ $invoice->total() }}</td>
+                    <td class="p-2">{{ $invoice->customer }}</td>
+                    <td class="p-2">{{ $invoice->payment_intent }}</td>
+                    {{--<td class="p-2"><span class="flex items-center text-sm font-medium text-gray-900 dark:text-white me-3"><span class="flex w-2.5 h-2.5 {{ $invoice->paid ? 'bg-green-500' : 'bg-red-500' }} rounded-full me-1.5 shrink-0"></span>{{ $invoice->paid ? 'Paid' : 'Unpaid' }}</span>
+                    </td>--}}
+                    <td class="p-2"><span class="inline-flex items-center
+                     {{ $invoice->paid== false ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}
+                      text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">
+                <span class="w-2 h-2 me-1 {{ $invoice->paid== false ? 'bg-green-500' : 'bg-red-500' }} rounded-full"></span>
+                    {{ $invoice->paid== false ? 'Paid' : 'Unpaid' }}
+                </span>
+                    </td>
+
+                    <td class="p-2">
+                        <a href="{{ route('download.invoice', $invoice->id) }}" class="text-blue-500 hover:underline">
+                            Download
+                        </a>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    @endif
+</div>
+
