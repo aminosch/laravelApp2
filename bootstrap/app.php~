@@ -16,6 +16,10 @@ return Application::configure(basePath: dirname(__DIR__))
             'check.plan' => CheckPlan::class,
         ]);
 
+        // ✅ Exclure le webhook Stripe de la protection CSRF
+        $middleware->validateCsrfTokens(except: [
+            'stripe/webhook', // 👈 C'est tout ce qu'il faut
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

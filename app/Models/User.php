@@ -41,31 +41,14 @@ class User extends Authenticatable
 
     public function orders()
     {
-        return $this->hasMany(\App\Models\Order::class, 'client_id');
+        return $this->hasMany(Order::class);
     }
-    public function hasPlan(string $planSlug): bool
+
+    public function latestOrder()
     {
-        $subscription = $this->subscription('default');
-
-        if (! $subscription || ! $subscription->valid()) {
-            return false;
-        }
-
-        $plan = \App\Models\Plan::where('stripe_price_id', $subscription->stripe_price)->first();
-
-        return $plan && $plan->slug === $planSlug;
+        return $this->hasOne(\App\Models\Order::class)->latestOfMany();
     }
 
-    public function currentPlan()
-    {
-        $subscription = $this->subscription('default');
-
-        if (! $subscription || ! $subscription->valid()) {
-            return null;
-        }
-
-        return \App\Models\Plan::where('stripe_price_id', $subscription->stripe_price)->first();
-    }
 
     /**
      * The attributes that should be hidden for serialization.

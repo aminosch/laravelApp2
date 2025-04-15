@@ -106,28 +106,22 @@
                         </span>
                     </span>
 
+
                             <div class="grid flex-1 text-left text-sm leading-tight">
                                 <span class="truncate font-semibold">{{ auth()->user()->name }}</span>
                                 <span class="truncate text-xs">{{ auth()->user()->email }}</span>
-                                @php
-                                    $subscription = auth()->user()->subscription('default');
-                                    $plan = null;
 
-                                    if ($subscription && $subscription->valid()) {
-                                        $plan = \App\Models\Plan::where('stripe_price_id', $subscription->stripe_price)->first();
-                                    }
-                                @endphp
-
-                                @if ($plan)
-                                    <span class="truncate text-xs text-green-600">
-                                        Plan: {{ $plan->name }}
+                                @if (auth()->user()->latestOrder)
+                                    <span class="mt-1 inline-block rounded-full bg-green-100 px-2 py-0.5 text-xs text-green-700">
+                                        Plan: {{ auth()->user()->latestOrder->plan->name }}
                                     </span>
                                 @else
-                                    <span class="truncate text-xs text-red-500">
-                                        No active plan
+                                    <span class="mt-1 inline-block rounded-full bg-zinc-100 px-2 py-0.5 text-xs text-zinc-600">
+                                        Geen abonnement
                                     </span>
                                 @endif
                             </div>
+
                         </div>
                     </div>
                 </flux:menu.radio.group>

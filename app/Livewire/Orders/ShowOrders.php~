@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Livewire\Orders;
 
 use Livewire\Component;
@@ -12,8 +13,8 @@ class ShowOrders extends Component
 
     public function mount()
     {
-        // ✅ Correct: alleen bestellingen van de ingelogde gebruiker
-        $this->orders = Order::where('user_id', Auth::id())->latest()->get();
+        // Fetch only orders belonging to the authenticated user
+        $this->orders = Order::where('client_id', Auth::id())->latest()->get();
     }
 
     public function render()
@@ -21,3 +22,4 @@ class ShowOrders extends Component
         return view('livewire.orders.show-orders');
     }
 }
+

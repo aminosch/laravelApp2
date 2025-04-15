@@ -105,4 +105,7 @@ Route::middleware(['auth', 'check.plan'])->group(function () {
 });
 
 
+
+Route::post('/stripe/webhook', [StripeWebhookController::class, 'handleWebhook']);
+
 require __DIR__.'/auth.php';

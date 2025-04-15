@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Livewire\Orders;
 
 use App\Models\Order;
@@ -14,8 +15,8 @@ class ShowOrder extends Component
 
     public function mount(Order $order)
     {
-        // ✅ Controleer of de order toebehoort aan de ingelogde gebruiker
-        abort_if($order->user_id !== Auth::id(), 403);
+        // Vérifie que l'utilisateur a le droit de voir cette facture
+        abort_if($order->client_id !== Auth::id(), 403);
         $this->order = $order;
     }
 
@@ -28,7 +29,7 @@ class ShowOrder extends Component
 
         return response()->streamDownload(
             fn () => print($pdf->output()),
-            'order-' . $this->order->stripe_transaction_id . '.pdf'
+            'order-'.$this->order->transaction_id.'.pdf'
         );
     }
 
@@ -37,3 +38,4 @@ class ShowOrder extends Component
         return view('livewire.orders.show-order');
     }
 }
+
