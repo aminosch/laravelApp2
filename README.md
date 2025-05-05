@@ -28,34 +28,34 @@ git clone https://github.com/jouwgebruikersnaam/jouw-repository.git
 cd jouw-repository
 
 2. Composer dependencies installeren
-composer install
+- composer install
 
 3. Node dependencies installeren
-npm install && npm run dev
+- npm install && npm run dev
 
 4. .env bestand instellen
-cp .env.example .env
+- cp .env.example .env
 
 Vul vervolgens je .env bestand aan met:
-Database credentials
-Google OAuth (Socialite)
-Stripe API keys
-OpenAI API key (optioneel)
+- Database credentials
+- Google OAuth (Socialite)
+- Stripe API keys
+- OpenAI API key (optioneel)
 
 5. Applicatiesleutel genereren
-php artisan key:generate
+- php artisan key:generate
 
 6. Database migreren
-php artisan migrate
+- php artisan migrate
 
 7. Server starten
-php artisan serve
+- php artisan serve
 
 🔑 Benodigde API Keys
 Zorg ervoor dat je deze API-sleutels aanmaakt en in je .env bestand zet:
 
-Google OAuth (Laravel Socialite)
-Registreer een project via Google Developers Console
+- Google OAuth (Laravel Socialite)
+- Registreer een project via Google Developers Console
 
 Genereer een OAuth 2.0 client ID & secret
 
@@ -65,7 +65,7 @@ GOOGLE_CLIENT_SECRET=your_google_client_secret
 GOOGLE_REDIRECT_URI=http://localhost:8000/auth/callback/google
 
 Stripe (Laravel Cashier)
-Maak een Stripe account aan via stripe.com
+- Maak een Stripe account aan via stripe.com
 
 Voeg toe aan .env:
 STRIPE_KEY=your_stripe_key
