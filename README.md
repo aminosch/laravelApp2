@@ -26,11 +26,11 @@ Volg deze stappen om het project lokaal op te zetten:
 ```bash
 git clone https://github.com/jouwgebruikersnaam/jouw-repository.git
 cd jouw-repository
+
+```bash
 2. Composer dependencies installeren
-bash
-Kopiëren
-Bewerken
 composer install
+
 3. Node dependencies installeren
 bash
 Kopiëren
