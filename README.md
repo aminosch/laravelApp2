@@ -31,7 +31,7 @@ Volg deze stappen om het project lokaal op te zetten:
 - composer install
 
 3. Node dependencies installeren
-- npm install && npm run dev
+- npm install & npm run dev
 
 4. .env bestand instellen
 - cp .env.example .env
