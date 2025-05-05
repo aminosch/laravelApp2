@@ -46,7 +46,7 @@ Volg deze stappen om het project lokaal op te zetten:
 - php artisan serve
 
 📚 Tutorial
-Wil je alles werkend krijgen? Volg de tutorial die bij dit project hoort (of maak zelf de keys aan zoals hierboven uitgelegd).
+Wil je alles werkend krijgen? Volg de tutorial die bij dit project hoort.
 🛑 Let op: API-sleutels kunnen niet gedeeld worden in de repository. Elke gebruiker moet deze zelf genereren en invullen.
 
 ✅ Inloggen met Google via Laravel Socialite
